@@ -10,16 +10,50 @@
 // You will have time to focus on it later.
 
 (() => {
-    // to get the value of an input: document.getElementById("element-id").value
+    // Récupérer les valeurs des champs input
+    const num1Input = document.getElementById("op-one");
+    const num2Input = document.getElementById("op-two");
+    const resultOutput = document.getElementById("op-result");
 
     const performOperation = operation => {
-        // perform the operation
+        // Récupérer les valeurs des champs d'entrée
+        const num1 = parseFloat(num1Input.value);
+        const num2 = parseFloat(num2Input.value);
+
+        // Effectuer l'opération en utilisant une structure switch
+        switch (operation) {
+            case "addition":
+                const additionResult = num1 + num2;
+                resultOutput.textContent = `Résultat de l'addition : ${additionResult}`;
+                break;
+
+            case "substraction":
+                const substractionResult = num1 - num2;
+                resultOutput.textContent = `Résultat de la soustraction : ${substractionResult}`;
+                break;
+
+            case "multiplication":
+                const multiplicationResult = num1 * num2;
+                resultOutput.textContent = `Résultat de la multiplication : ${multiplicationResult}`;
+                break;
+
+            case "division":
+                if (num2 === 0) {
+                    resultOutput.textContent = "Division par zéro impossible !";
+                } else {
+                    const divisionResult = num1 / num2;
+                    resultOutput.textContent = `Résultat de la division : ${divisionResult}`;
+                }
+                break;
+
+            default:
+                resultOutput.textContent = "Opération non reconnue";
+        }
     };
 
+    // Ajouter des écouteurs d'événements aux boutons d'opération
     Array.from(document.querySelectorAll("button.operator")).forEach($btn =>
-        $btn.addEventListener(
-            "click",
-            () => (performOperation($btn.id), false),
-        ),
+        $btn.addEventListener("click", () => performOperation($btn.id))
     );
 })();
+
