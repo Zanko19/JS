@@ -10,5 +10,21 @@
 // You will have time to focus on it later.
 
 (() => {
-    // your code here
+    // Sélectionne les boutons par leur ID
+    const redButton = document.getElementById("red");
+    const greenButton = document.getElementById("green");
+    const yellowButton = document.getElementById("yellow");
+    const blueButton = document.getElementById("blue");
+
+    // Ajoute un écouteur d'événements à chaque bouton
+    redButton.addEventListener("click", () => changeBackgroundColor("red"));
+    greenButton.addEventListener("click", () => changeBackgroundColor("green"));
+    yellowButton.addEventListener("click", () => changeBackgroundColor("yellow"));
+    blueButton.addEventListener("click", () => changeBackgroundColor("blue"));
+
+    // Fonction pour changer la couleur de fond
+    function changeBackgroundColor(color) {
+        document.body.style.backgroundColor = color;
+    }
 })();
+

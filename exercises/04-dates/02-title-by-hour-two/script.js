@@ -10,6 +10,18 @@
 // You will have time to focus on it later.
 
 (() => {
-    // to change the content of a tag: document.getElementById("element-id").innerHTML = "new-value"
-    // your code here
+    // Récupère l'élément avec l'ID "target"
+    const targetElement = document.getElementById("target");
+
+    // Récupère l'heure actuelle
+    const currentHour = new Date().getHours();
+
+    // Vérifie si l'heure est avant 18h
+    if (currentHour < 17 || (currentHour === 17 && currentMinute < 30)) {
+        // Change le contenu de la balise si c'est le cas
+        targetElement.innerHTML = "Bonjour";
+    } else {
+        // Sinon, change le contenu de la balise à "Bonsoir"
+        targetElement.innerHTML = "Bonsoir";
+    }
 })();
