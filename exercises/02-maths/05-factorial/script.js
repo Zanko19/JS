@@ -1,18 +1,29 @@
-/* becode/javascript
- *
- * /02-maths/05-factorial/script.js - 2.5: Factorielle
- *
- * coded by leny@BeCode
- * started at 26/10/2018
- */
-
-// NOTE: don't focus on the existing code structure for now.
-// You will have time to focus on it later.
-
 (() => {
-    // to get the value of an input: document.getElementById("element-id").value
-
     document.getElementById("run").addEventListener("click", () => {
-        // your code here
+        // Récupère la valeur de l'input
+        let inputValue = document.getElementById("number").value;
+
+        // Convertit la valeur en nombre entier
+        let number = parseInt(inputValue);
+
+        // Vérifie si l'entrée est un nombre valide
+        if (!isNaN(number) && number >= 0) {
+            // Calcule la factorielle
+            let factorial = calculateFactorial(number);
+
+            // Affiche la factorielle
+            alert(`La factorielle de ${number} est ${factorial}`);
+        } else {
+            alert("Veuillez entrer un nombre entier positif.");
+        }
     });
+
+    // Fonction pour calculer la factorielle
+    function calculateFactorial(n) {
+        if (n === 0 || n === 1) {
+            return 1;
+        } else {
+            return n * calculateFactorial(n - 1);
+        }
+    }
 })();
